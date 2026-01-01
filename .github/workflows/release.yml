@@ -181,9 +181,9 @@ jobs:
       - name: Create archive
         run: |
           if [ "${{ matrix.archive }}" = "zip" ]; then
-            zip croc_${{ github.event.release.name }}_${{ matrix.name }}.zip croc${{ matrix.ext }} LICENSE
+            zip croc_v10.3.2_${{ matrix.name }}.zip croc${{ matrix.ext }} LICENSE
           else
-            tar -czvf croc_${{ github.event.release.name }}_${{ matrix.name }}.tar.gz croc${{ matrix.ext }} LICENSE
+            tar -czvf croc_v10.3.2_${{ matrix.name }}.tar.gz croc${{ matrix.ext }} LICENSE
           fi
 
       - name: Upload build artifact
@@ -207,11 +207,11 @@ jobs:
       - name: Generate checksums
         run: |
           # Generate SHA256 checksums for all archives
-          sha256sum *.zip *.tar.gz > croc_${{ github.event.release.name }}_checksums.txt
+          sha256sum *.zip *.tar.gz > croc_v10.3.2_checksums.txt
           
           # Display the checksums file for verification
           echo "Generated checksums:"
-          cat croc_${{ github.event.release.name }}_checksums.txt
+          cat croc_v10.3.2_checksums.txt
 
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
